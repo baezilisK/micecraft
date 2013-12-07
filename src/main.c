@@ -8,6 +8,8 @@
 #define H 480
 #define W 640
 
+static int skipmouse;  /*  mouse handler should ignore next event */
+
 static void init (void) {
   glClearColor (0, 0, 0, 0);
   kbd_setmap ("assets/kbd/dvp");
@@ -47,7 +49,6 @@ static void tick (void) {
   if (kbd_state['c']) cam_z -= u;
   if (kbd_state[' ']) cam_z += u;
   if (kbd_toggle['q']) main_exit ();
-  if (kbd_toggle['f']) glutFullScreen (); else glutReshapeWindow (W, H);
 }
 
 static void timer (int s) {
@@ -68,8 +69,21 @@ static void mouse (int x, int y) {
   int
     cx = glutGet (GLUT_WINDOW_WIDTH) / 2,
     cy = glutGet (GLUT_WINDOW_HEIGHT) / 2;
-  dx = (cx - x) * s; dy = (cy - y) * s;
-  cam_rotate (dx, dy);
+  if (skipmouse)
+    skipmouse = 0;
+  else {
+    dx = (cx - x) * s; dy = (cy - y) * s;
+    cam_rotate (dx, dy);
+  }
+}
+
+static void keyboard (unsigned char key, int x, int y) {
+  if (kbd_map[key] == 'f') {
+    skipmouse = 1;
+    if (kbd_toggle['f']) glutReshapeWindow (W, H);
+    else glutFullScreen ();
+  }
+  kbd_glutkeydown (key, x, y);
 }
 
 int main (int argc, char **argv) {
@@ -80,7 +94,7 @@ int main (int argc, char **argv) {
   init ();
   glutReshapeFunc (reshape);
   glutDisplayFunc (display);
-  glutKeyboardFunc (kbd_glutkeydown);
+  glutKeyboardFunc (keyboard);
   glutKeyboardUpFunc (kbd_glutkeyup);
   glutPassiveMotionFunc (mouse);
   glutTimerFunc (10, timer, 0);
