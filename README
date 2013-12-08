@@ -1,1 +1,13 @@
 Open source Minecraft clone in C.
+
+Rationale:
+  * An open-source Minecraft would have provided a wealth of interesting
+    code to study, and this project attempts to bridge that gap. Yes,
+    the code to Infiniminer was eventually released, but Notch took it
+    so much farther as to make the original redundant. Plus, it was
+    written in C#.
+  * Recently I've started to dislike the direction Minecraft is heading.
+    Early versions were fantastic (I loved the early beta; the alpha
+    looked amazing) but in my view not much has improved since then. So
+    this is an attempt to further investage its potential in regard to
+    building and world exploration.
