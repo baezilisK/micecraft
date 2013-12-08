@@ -3,6 +3,7 @@
 #include "chunk.h"
 #include "map.h"
 #include "rng.h"
+#include "terrain.h"
 #include "ugl.h"
 #include "util.h"
 
@@ -10,11 +11,13 @@ static chunk chunks[4];
 
 void map_gen (void) {
   int i, j, k, l;
+  terrain_init ();
   for (l = 0; l < arrlen (chunks); ++l)
     for (i = 0; i < CHUNK_DX; ++i)
       for (j = 0; j < CHUNK_DY; ++j)
         for (k = 0; k < CHUNK_DZ; ++k)
-          chunks[l][i][j][k] = rng_f () < 0.05;
+          chunks[l][i][j][k] = k < terrain_h (i, j);
+  terrain_del ();
 }
 
 void map_set (int i, int j, int k, int val) {
