@@ -4,6 +4,7 @@
 
 #include "cam.h"
 #include "kbd.h"
+#include "ugl.h"
 
 #define H 480
 #define W 640
@@ -21,7 +22,8 @@ static void main_exit (void) {
 
 static void display (void) {
   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  glutWireCube (1);
+  glPolygonMode (GL_FRONT_AND_BACK, GL_LINE);
+  ugl_cube (0, 0, 0, 1);
   glutSwapBuffers ();
 }
 

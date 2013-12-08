@@ -4,7 +4,7 @@ CFLAGS = -std=c89 -O4 -Wall -Werror -Wextra -pedantic $(NOWARN)
 LDFLAGS = -lm -lGL -lGLU -lglut
 IDIRS = include
 INCLUDE = $(patsubst %, -I%, $(IDIRS))
-MODULES = cam kbd util
+MODULES = cam kbd ugl util
 MODULES_BIN = $(patsubst %, bin/%.o, $(MODULES))
 MODULES_BIN_PROF = $(patsubst %, bin/prof/%.o, $(MODULES))
 MODULES_BIN_MF = $(patsubst %, bin/mf/%.o, $(MODULES));

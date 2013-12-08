@@ -9,6 +9,9 @@
 #define max(a, b) ((a) > (b) ? (a) : (b))
 #define PI 3.14159265359 /* not defined by standard C89 */
 
-void *xmalloc (size_t n);
+/*
+ * Allocates n bytes and returns a pointer to the memory.
+ */
+void *zmalloc (size_t n);
 
 #endif /* UTIL_H */
