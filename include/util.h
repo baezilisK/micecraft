@@ -14,6 +14,6 @@
 /*
  * Allocates n bytes and returns a pointer to the memory.
  */
-void *zmalloc (size_t n);
+void *xmalloc (size_t n);
 
 #endif /* UTIL_H */
