@@ -4,6 +4,8 @@
 #ifndef UTIL_H
 #define UTIL_H
 
+#include <stdlib.h>
+
 #define arrlen(u) (sizeof(u) / sizeof *(u))
 #define min(a, b) ((a) < (b) ? (a) : (b))
 #define max(a, b) ((a) > (b) ? (a) : (b))
