@@ -25,8 +25,7 @@ static void main_exit (void) {
 static void display (void) {
   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glPolygonMode (GL_FRONT_AND_BACK, GL_LINE);
-  glColor3ub (0xAA, 0xAA, 0xAA); map_display ();
-  glColor3f (0, 0, 1); ugl_cube (0, 0, 0, 8);
+  map_display ();
   glutSwapBuffers ();
 }
 

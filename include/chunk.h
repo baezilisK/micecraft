@@ -10,6 +10,6 @@ typedef int chunk[CHUNK_DX][CHUNK_DY][CHUNK_DZ];
 /*
  * Render the given chunk.
  */
-void chunk_display (chunk c);
+void chunk_display (chunk c, float x);
 
 #endif /* CHUNK_H */
