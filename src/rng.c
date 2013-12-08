@@ -9,7 +9,7 @@ void rng_init (void) {
   srand (tv.tv_sec * tv.tv_usec);
 }
 
-int rng_i (void) {
+int rng_i (int n) {
   return rand () / (RAND_MAX/n + 1);
 }
 

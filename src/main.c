@@ -4,6 +4,7 @@
 
 #include "cam.h"
 #include "kbd.h"
+#include "map.h"
 #include "ugl.h"
 
 #define H 480
@@ -14,6 +15,7 @@ static int skipmouse;  /*  mouse handler should ignore next event */
 static void init (void) {
   glClearColor (0, 0, 0, 0);
   kbd_setmap ("assets/kbd/dvp");
+  map_gen ();
 }
 
 static void main_exit (void) {
@@ -23,7 +25,8 @@ static void main_exit (void) {
 static void display (void) {
   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glPolygonMode (GL_FRONT_AND_BACK, GL_LINE);
-  ugl_cube (0, 0, 0, 1);
+  glColor3ub (0xAA, 0xAA, 0xAA); map_display ();
+  glColor3f (0, 0, 1); ugl_cube (0, 0, 0, 8);
   glutSwapBuffers ();
 }
 
