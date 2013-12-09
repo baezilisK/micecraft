@@ -9,7 +9,10 @@ MODULES_BIN = $(patsubst %, bin/%.o, $(MODULES))
 MODULES_BIN_PROF = $(patsubst %, bin/prof/%.o, $(MODULES))
 MODULES_BIN_MF = $(patsubst %, bin/mf/%.o, $(MODULES));
 
-all: main
+all: dirs main
+
+dirs:
+	mkdir -p bin bin/prof bin/mf assets/map
 
 prof: src/main.c $(MODULES_BIN_PROF)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(INCLUDE) -pg -o $@ $^
