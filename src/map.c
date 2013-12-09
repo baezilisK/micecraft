@@ -8,7 +8,7 @@
 #include "ugl.h"
 #include "util.h"
 
-static chunk chunks[4];
+static chunk chunks[36];
 
 void map_gen (void) {
   int i, j, k, l;
@@ -42,7 +42,8 @@ float map_height (float x, float y, float z) {
 void map_display (void) {
   int i;
   for (i = 0; i < arrlen (chunks); ++i) {
-    glColor3f (0, 0, 1); ugl_cube (CHUNK_DX*i, 0, 0, CHUNK_DX);
+    glColor3f (0, 0, 1);
+    ugl_rprism (CHUNK_DX*i, 0, 0, CHUNK_DX, CHUNK_DY, CHUNK_DZ);
     chunk_display (chunks[i], i * CHUNK_DX);
   }
 }

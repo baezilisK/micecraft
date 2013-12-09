@@ -3,7 +3,7 @@
 
 #define CHUNK_DX 8
 #define CHUNK_DY 8
-#define CHUNK_DZ 8
+#define CHUNK_DZ 128
 
 typedef int chunk[CHUNK_DX][CHUNK_DY][CHUNK_DZ];
 

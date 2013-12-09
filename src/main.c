@@ -35,7 +35,7 @@ static void display (void) {
 static void reshape (int w, int h) {
   glViewport (0, 0, w, h);
   glMatrixMode (GL_PROJECTION); glLoadIdentity ();
-    gluPerspective (60, 1.0*w/h, 0.01, 100);
+    gluPerspective (60, 1.0*w/h, 0.125, 256);
     cam_sync ();
 }
 
