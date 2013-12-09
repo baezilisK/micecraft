@@ -12,9 +12,10 @@ static void getdx (float *dx) {
   dx[2] = sin (cam_tj);
 }
 
-void cam_mv (float x, float y) {
+void cam_mv (float x, float y, float z) {
   cam_x += x * cos (cam_ti) + y * cos (cam_ti - PI/2);
   cam_y += x * sin (cam_ti) + y * sin (cam_ti - PI/2);
+  cam_z += z;
 }
 
 void cam_rotate (float a, float b) {

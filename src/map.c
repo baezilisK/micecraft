@@ -16,7 +16,7 @@ void map_gen (void) {
     for (i = 0; i < CHUNK_DX; ++i)
       for (j = 0; j < CHUNK_DY; ++j)
         for (k = 0; k < CHUNK_DZ; ++k)
-          chunks[l][i][j][k] = k < terrain_h (i, j);
+          chunks[l][i][j][k] = rng_f () < 0.05;
   terrain_del ();
 }
 

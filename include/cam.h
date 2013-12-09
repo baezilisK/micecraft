@@ -16,9 +16,9 @@ float
   cam_ti, cam_tj;      /* rotation, ti real, -PI < tj < PI */
 
 /*
- * Move the camera in the xy plane relative to its position.
+ * Move the camera relative to its direction.
  */
-void cam_mv (float x, float y);
+void cam_mv (float x, float y, float z);
 
 /*
  * Rotate the camera through a (xy plane) and b (xyz plane).

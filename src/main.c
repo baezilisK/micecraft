@@ -45,13 +45,13 @@ static void trackfps (void) {
 }
 
 static void tick (void) {
-  float u = 0.03;
-  if (kbd_state['w']) cam_mv (u, 0);
-  if (kbd_state['s']) cam_mv (-u, 0);
-  if (kbd_state['a']) cam_mv (0, -u);
-  if (kbd_state['d']) cam_mv (0, u);
-  if (kbd_state['c']) cam_z -= u;
-  if (kbd_state[' ']) cam_z += u;
+  float u = 0.06;
+  if (kbd_state['w']) cam_mv (u, 0, 0);
+  if (kbd_state['s']) cam_mv (-u, 0, 0);
+  if (kbd_state['a']) cam_mv (0, -u, 0);
+  if (kbd_state['d']) cam_mv (0, u, 0);
+  if (kbd_state['c']) cam_mv (0, 0, -u);
+  if (kbd_state[' ']) cam_mv (0, 0, u);
   if (kbd_toggle['q']) main_exit ();
 }
 
