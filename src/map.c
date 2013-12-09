@@ -25,6 +25,8 @@ void map_set (int i, int j, int k, int val) {
 }
 
 int map_get (int i, int j, int k) {
+  if (i < 0 || j < 0 || k < 0) return 0;
+  if (i > 32 || j > 8 || k > 8) return 0;
   return chunks[0][i][j][k];
 }
 

@@ -1,7 +1,9 @@
+#include <stdio.h>
 #include <math.h>
 #include "GL/gl.h"
 #include "GL/glu.h"
 #include "cam.h"
+#include "map.h"
 #include "util.h"
 
 #define EPSILON 0.01
@@ -13,9 +15,15 @@ static void getdx (float *dx) {
 }
 
 void cam_mv (float x, float y, float z) {
-  cam_x += x * cos (cam_ti) + y * cos (cam_ti - PI/2);
-  cam_y += x * sin (cam_ti) + y * sin (cam_ti - PI/2);
-  cam_z += z;
+  float
+    dx = x * cos (cam_ti) + y * cos (cam_ti - PI/2),
+    dy = x * sin (cam_ti) + y * sin (cam_ti - PI/2),
+    dz = z;
+  int i = cam_x + dx, j = cam_y + dy, k = cam_z + dz;
+  if (!map_get (i, j, k)) {
+    printf ("moving into %d %d %d\n", i, j, k);
+    cam_x += dx; cam_y += dy; cam_z += dz;
+  }
 }
 
 void cam_rotate (float a, float b) {
