@@ -1,3 +1,4 @@
+#include <assert.h>
 #include "GL/gl.h"
 
 #include "chunk.h"
@@ -28,6 +29,14 @@ int map_get (int i, int j, int k) {
   if (i < 0 || j < 0 || k < 0) return 0;
   if (i > 32 || j > 8 || k > 8) return 0;
   return chunks[0][i][j][k];
+}
+
+float map_height (float x, float y, float z) {
+  float a = 1000;
+  int i = x, j = y, k = z;
+  assert (x < a && y < a && z < a);
+  for (; k >= 0 && !map_get (i, j, k); --k);
+  return z - (k + 1);
 }
 
 void map_display (void) {
