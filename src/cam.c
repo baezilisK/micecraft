@@ -14,7 +14,8 @@ static void getdx (float *dx) {
   dx[2] = sin (cam_tj);
 }
 
-void cam_mv (float x, float y, float z) {
+int cam_mv (float x, float y, float z) {
+  int ret = -1;
   float
     dx = x * cos (cam_ti) + y * cos (cam_ti - PI/2),
     dy = x * sin (cam_ti) + y * sin (cam_ti - PI/2),
@@ -22,7 +23,9 @@ void cam_mv (float x, float y, float z) {
   int i = cam_x + dx, j = cam_y + dy, k = cam_z + dz;
   if (!map_get (i, j, k)) {
     cam_x += dx; cam_y += dy; cam_z += dz;
+    ret = 0;
   }
+  return ret;
 }
 
 void cam_rotate (float a, float b) {

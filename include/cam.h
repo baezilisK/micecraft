@@ -16,9 +16,11 @@ float
   cam_ti, cam_tj;      /* rotation, ti real, -PI < tj < PI */
 
 /*
- * Move the camera relative to its direction.
+ * Move the camera relative to its direction, unless the terrain is in
+ * the way. Returns zero on success, nonzero in the event of an
+ * obstruction.
  */
-void cam_mv (float x, float y, float z);
+int cam_mv (float x, float y, float z);
 
 /*
  * Rotate the camera through a (xy plane) and b (xyz plane).
