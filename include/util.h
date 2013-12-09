@@ -9,6 +9,7 @@
 #define arrlen(u) (sizeof(u) / sizeof *(u))
 #define min(a, b) ((a) < (b) ? (a) : (b))
 #define max(a, b) ((a) > (b) ? (a) : (b))
+#define clamp(a, l, r) (min(max(a, l), r))
 #define PI 3.14159265359 /* not defined by standard C89 */
 
 /*
