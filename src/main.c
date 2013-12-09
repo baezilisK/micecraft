@@ -16,6 +16,7 @@ static void init (void) {
   glClearColor (0, 0, 0, 0);
   kbd_setmap ("assets/kbd/dvp");
   map_gen ();
+  cam_x = -1; cam_y = -1; cam_z = -1;
 }
 
 static void main_exit (void) {

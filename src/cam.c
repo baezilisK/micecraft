@@ -21,7 +21,6 @@ void cam_mv (float x, float y, float z) {
     dz = z;
   int i = cam_x + dx, j = cam_y + dy, k = cam_z + dz;
   if (!map_get (i, j, k)) {
-    printf ("moving into %d %d %d\n", i, j, k);
     cam_x += dx; cam_y += dy; cam_z += dz;
   }
 }
