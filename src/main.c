@@ -6,6 +6,7 @@
 #include "kbd.h"
 #include "map.h"
 #include "ugl.h"
+#include "util.h"
 
 #define H 480
 #define W 640
@@ -53,9 +54,14 @@ static void tick (void) {
   if (kbd_state['s']) cam_mv (-u, 0, 0);
   if (kbd_state['a']) cam_mv (0, -u, 0);
   if (kbd_state['d']) cam_mv (0, u, 0);
+  if (kbd_toggle['q']) main_exit ();
+
+  if (kbd_state[' ']) cam_mv (0, 0, 0.5);
+  cam_mv (0, 0, -min (u, map_height (cam_x, cam_y, cam_z)));
+  /*
   if (kbd_state['c']) cam_mv (0, 0, -u);
   if (kbd_state[' ']) cam_mv (0, 0, u);
-  if (kbd_toggle['q']) main_exit ();
+  */
   /*
   camzv += G;
   cam_mv (0, 0, camzv);
