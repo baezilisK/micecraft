@@ -13,7 +13,6 @@
 #define G (-9.81)
 
 static int skipmouse;  /*  mouse handler should ignore next event */
-static float camzv;     /* camera upward velocity */
 
 static void init (void) {
   glClearColor (0, 0, 0, 0);
@@ -56,21 +55,10 @@ static void tick (void) {
   if (kbd_state['d']) cam_mv (0, u, 0);
   if (kbd_toggle['q']) main_exit ();
 
-  if (kbd_state[' ']) cam_mv (0, 0, 0.5);
+  if (kbd_state[' '] &&
+      map_height (cam_x, cam_y, cam_z) < 0.1)
+    cam_mv (0, 0, 2);
   cam_mv (0, 0, -min (u, map_height (cam_x, cam_y, cam_z)));
-  /*
-  if (kbd_state['c']) cam_mv (0, 0, -u);
-  if (kbd_state[' ']) cam_mv (0, 0, u);
-  */
-  /*
-  camzv += G;
-  cam_mv (0, 0, camzv);
-  printf ("TICK at (%f %f %f)\n", cam_x, cam_y, cam_z);
-  */
-  printf ("map_height (%f %f %f) = %f\n", cam_x, cam_y, cam_z,
-    map_height (cam_x, cam_y, cam_z)
-  );
-  (void) camzv;
 }
 
 static void timer (int s) {
